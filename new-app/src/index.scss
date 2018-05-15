@@ -2,7 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #4c7196; }
+  background: #4c7196;
+}
 
 .nav {
   position: fixed;
@@ -14,6 +15,8 @@ body {
   height: calc(100vh - 89px);
   margin: 0;
   padding: 0 0 10px;
-  list-style: none; }
-  .nav._hack {
-    font-size: 24px; }
+  list-style: none;   
+  &._hack{
+    font-size: 24px;
+  }
+}
