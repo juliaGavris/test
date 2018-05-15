@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #4c7196;
+}
+
+.nav {
+  position: fixed;
+  top: 79px;
+  left: 9px;
+  display: block;
+  overflow: auto;
+  width: 261px;
+  height: calc(100vh - 89px);
+  margin: 0;
+  padding: 0 0 10px;
+  list-style: none;   
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: list-item;
+    text-align: -webkit-match-parent;    
+  }
+
+  &.__item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &.__subitem {
+    margin: 0;
+    padding: 0;
+  }
+
+  a&.__link {
+    padding: 4px 20px;
+    transition: color .3s;
+    text-decoration: none;
+    color: rgba(255,255,255,.8);
+  }
+}

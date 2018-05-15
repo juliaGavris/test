@@ -20,20 +20,39 @@ class WikiPage extends React.Component {
 
   renderNav () {
     const navItems = data.map((elem, index) => {
-      console.warn(elem)
-      if (1 === 1) {
+      if (Array.isArray(elem)) {
+        const link = "#" + elem[0]
+        const items = elem
+          .filter((element, index) => {
+            return index !== 0
+          })
+          .map((element) => {
+            const sublink = "#" + element
+            return (
+              <li className="nav__subitem" key={element}>
+                <a className="nav__sublink" href={sublink}>
+                  {element}
+                </a>
+              </li>
+            )
+          })
+        console.warn(items)
         return (
-          <li className="nav__item" key={elem}>
-            <a className="nav__link" href="#">
-              {elem[0]}
+          <li className="nav__item" key={elem[0]}>
+            <a className="nav__link" href={link}>
+              {elem[0]}              
             </a>
+            <ul className="nav__item">
+              {items}
+            </ul>
           </li>
         )
       } else {
+        const link = "#" + elem
         return (
           <li className="nav__item" key={elem}>
-            <a className="nav__link" href="#">
-              elem
+            <a className="nav__link" href={link}>
+              {elem}
             </a>
           </li>
         )
