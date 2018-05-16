@@ -2,15 +2,65 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const data = [ 
-  "Abstract", 
-  ["History", "European contact", "Major century", "The revolution"], 
-  "Governance", 
-  ["Geography", "Subdivisions", "Mount pelee", "Geopolitics"], 
-  "Economics",
-  "Demographics",
-  "Culture",
-  "References",
+const dataSet = [ 
+  {
+    name: "Abstract",
+    children: null
+  },
+  {
+    name: "History",
+    children: [
+      {
+        name: "European contact",
+        children: null
+      },
+      {
+        name: "Major century",
+        children: null
+      },
+      {
+        name: "The revolution",
+        children: null
+      }
+    ]
+  },
+  {
+    name: "Governance",
+    children: null
+  },
+  {
+    name: "Geography",
+    children: [
+      {
+        name: "Subdivisions",
+        children: null
+      },
+      {
+        name: "Mount pelee",
+        children: null
+      },
+      {
+        name: "Geopolitics",
+        children: null
+      }
+    ]
+  },  
+  {
+    name: "Economics",
+    children: null
+  },
+  {
+    name: "Demographics",
+    children: null
+  },
+  {
+    name: "Culture",
+    children: null
+  },
+  {
+    name: "References",
+    children: null
+  }
 ]
 
 const mainTitle = "Martinique"
@@ -20,30 +70,31 @@ const fakeContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cu
 class WikiPage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      currentItem: dataSet[0].name
+    }
   }
 
-  renderNav () {
-    const navItems = data.map((elem, index) => {
-      if (Array.isArray(elem)) {
-        const link = "#" + elem[0]
-        const items = elem
-          .filter((element, index) => {
-            return index !== 0
-          })
+  renderNav2 () {
+    const navTitle = "contents"
+    const navItems = dataSet.map((elem, index) => {
+      if (elem.children) {
+        const link = "#" + elem.name
+        const items = elem.children
           .map((element) => {
-            const sublink = "#" + element
+            const sublink = "#" + element.name
             return (
-              <li className="nav-list__item" key={element}>
+              <li className="nav-list__item" key={element.name}>
                 <a className="nav-list__link" href={sublink}>
-                  {element}
+                  {element.name}
                 </a>
               </li>
             )
           })
         return (
-          <li className="nav__item" key={elem[0]}>
+          <li className="nav__item" key={elem.name}>
             <a className="nav__link" href={link}>
-              {elem[0]}              
+              {elem.name}              
             </a>
             <ul className="nav-list">
               {items}
@@ -51,11 +102,11 @@ class WikiPage extends React.Component {
           </li>
         )
       } else {
-        const link = "#" + elem
+        const link = "#" + elem.name
         return (
-          <li className="nav__item" key={elem}>
+          <li className="nav__item" key={elem.name}>
             <a className="nav__link" href={link}>
-              {elem}
+              {elem.name}
             </a>
           </li>
         )
@@ -63,23 +114,23 @@ class WikiPage extends React.Component {
     })
     return (
       <ul className="nav">
+        <li className="nav__item nav__item_title">
+          {navTitle.toUpperCase()}
+        </li>        
         {navItems}
       </ul>
     )
   }
 
-  renderArticle () {
-    const mainArticle = data.map((elem, index) => {
-      if (Array.isArray(elem)) {
-        const items = elem
-          .filter((element, index) => {
-            return index !== 0
-          })
+  renderArticle2 () {
+    const mainArticle = dataSet.map((elem, index) => {
+      if (elem.children) {
+        const items = elem.children
           .map((element) => {
             return (
-              <div className="subarticle" id={element}>
-                <div className="article-wrap__subtitle">
-                  {element}
+              <div className="subarticle" key={element.name}>
+                <div className="article-wrap__subtitle" id={element.name}>
+                  {element.name}
                 </div>
                 <div className="article-wrap__content">
                   {fakeContent}
@@ -88,22 +139,24 @@ class WikiPage extends React.Component {
             )
           })
         return (
-          <div className="article-wrap">
-            <div className="article-wrap__title" id={elem[0]}>
-              {elem[0]}
+          <div className="article-wrap" key={elem.name}>
+            <div className="article-wrap__title" id={elem.name}>
+              {elem.name}
             </div>
             {items}
           </div>   
         )
       } else {
         return (
-          <div className="article-wrap">
-            <div className="article-wrap__title" id={elem}>
-              {index === 0 ? mainTitle : elem}
+          <div className="article-wrap" key={elem.name}>
+            <div className="article-wrap__title" id={elem.name}>
+              {index === 0 ? mainTitle : elem.name}
             </div>
-            <div className="article-wrap__hint" id={elem}>
-              {index === 0 ? hint : null}
-            </div>
+            {index === 0 &&
+              <div className="article-wrap__hint" id={elem}>
+                {hint}
+              </div>
+            }
             <div className="article-wrap__content">
               {fakeContent}
             </div>
@@ -122,8 +175,8 @@ class WikiPage extends React.Component {
   render() {
     return (
       <div className="page">
-        {this.renderNav()}
-        {this.renderArticle()}
+        {this.renderNav2()}
+        {this.renderArticle2()}
       </div>
     );
   }

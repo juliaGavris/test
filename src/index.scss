@@ -25,6 +25,11 @@ body {
     margin: 0 0 0 20px;
     padding: 10px 0px;
     border-bottom: 1px solid #f1f3f4;
+
+    &_title {
+      text-align: center;
+      color: rgba(0,0,0,.6)
+    }
   }
 
   &__link {
@@ -71,7 +76,7 @@ body {
 
 .article-wrap {
   display: block;
-  padding: 46px 48px 7px;
+  padding: 50px 100px 7px;
   border-top: 1px solid #f1f3f4;
   &__title {
     font: 300 100% 'OpenSans-SemiBold',Arial,sans-serif;
@@ -113,5 +118,6 @@ body {
   &__content {
     clear: left;
     margin: 0 0 16px;
+    line-height: 24px;
   }
 }
