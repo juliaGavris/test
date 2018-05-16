@@ -75,24 +75,36 @@ class WikiPage extends React.Component {
     }
   }
 
+
+  handleChange = (value) => {
+    this.setState({
+      ...this.state,
+      currentItem: value,
+      }
+    )
+  }
+
   renderNav () {
+    const {currentItem} = this.state
     const navTitle = "contents"
     const navItems = dataSet.map((elem, index) => {
       const link = "#" + elem.name
+      const isChosen = elem.name === currentItem ? "nav__item nav__item_chosen" : "nav__item"
       const items = elem.children ? elem.children
         .map((element) => {
           const sublink = "#" + element.name
+          const isChosen = element.name === currentItem ? "nav-list__item nav-list__item_chosen" : "nav-list__item"
           return (
-            <li className="nav-list__item" key={element.name}>
-              <a className="nav-list__link" href={sublink}>
+            <li className={isChosen} key={element.name}>
+              <a className="nav-list__link" href={sublink} onClick={e => this.handleChange(element.name)}>
                 {element.name}
               </a>
             </li>
           )
         }) : null
       return (
-        <li className="nav__item" key={elem.name}>
-          <a className="nav__link" href={link}>
+        <li className={isChosen} key={elem.name}>
+          <a className="nav__link" href={link}  onClick={e => this.handleChange(elem.name)}>
             {elem.name}
           </a>
           {elem.children &&

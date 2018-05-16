@@ -25,7 +25,17 @@ body {
     margin: 0 0 0 20px;
     padding: 10px 0px;
     border-bottom: 1px solid #f1f3f4;
-
+    position: relative;
+    &_chosen:before {
+      display: inline-block;
+      position: absolute;
+      right: 20px;
+      content: "\2693";
+      width: 18px;
+      height: 18px;
+      font-size: 12px;
+      // background: black;
+    }
     &_title {
       text-align: center;
       color: rgba(0,0,0,.6)
@@ -52,7 +62,18 @@ body {
   &__item {
     margin: 0;
     padding: 5px 0;
-
+    position: relative;
+    &_chosen:before {
+      position: absolute;
+      right: 20px;
+      display: inline-block;
+      margin-left: 10px;
+      content: "\2693";
+      width: 18px;
+      height: 18px;
+      font-size: 12px;
+      // background: black;
+    }
   }
 
   &__link {
