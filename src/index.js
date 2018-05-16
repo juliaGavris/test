@@ -75,42 +75,33 @@ class WikiPage extends React.Component {
     }
   }
 
-  renderNav2 () {
+  renderNav () {
     const navTitle = "contents"
     const navItems = dataSet.map((elem, index) => {
-      if (elem.children) {
-        const link = "#" + elem.name
-        const items = elem.children
-          .map((element) => {
-            const sublink = "#" + element.name
-            return (
-              <li className="nav-list__item" key={element.name}>
-                <a className="nav-list__link" href={sublink}>
-                  {element.name}
-                </a>
-              </li>
-            )
-          })
-        return (
-          <li className="nav__item" key={elem.name}>
-            <a className="nav__link" href={link}>
-              {elem.name}              
-            </a>
+      const link = "#" + elem.name
+      const items = elem.children ? elem.children
+        .map((element) => {
+          const sublink = "#" + element.name
+          return (
+            <li className="nav-list__item" key={element.name}>
+              <a className="nav-list__link" href={sublink}>
+                {element.name}
+              </a>
+            </li>
+          )
+        }) : null
+      return (
+        <li className="nav__item" key={elem.name}>
+          <a className="nav__link" href={link}>
+            {elem.name}
+          </a>
+          {elem.children &&
             <ul className="nav-list">
               {items}
             </ul>
-          </li>
-        )
-      } else {
-        const link = "#" + elem.name
-        return (
-          <li className="nav__item" key={elem.name}>
-            <a className="nav__link" href={link}>
-              {elem.name}
-            </a>
-          </li>
-        )
-      }
+          }
+        </li>
+      )
     })
     return (
       <ul className="nav">
@@ -122,7 +113,7 @@ class WikiPage extends React.Component {
     )
   }
 
-  renderArticle2 () {
+  renderArticle () {
     const mainArticle = dataSet.map((elem, index) => {
       if (elem.children) {
         const items = elem.children
@@ -175,8 +166,8 @@ class WikiPage extends React.Component {
   render() {
     return (
       <div className="page">
-        {this.renderNav2()}
-        {this.renderArticle2()}
+        {this.renderNav()}
+        {this.renderArticle()}
       </div>
     );
   }
