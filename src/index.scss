@@ -9,24 +9,31 @@ body {
   position: fixed;
   top: 79px;
   left: 9px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   overflow: auto;
   width: 261px;
   height: calc(100vh - 89px);
   margin: 0;
   padding: 0 0 10px;
   list-style: none;   
+  background: #f5f9fa;
 
   &__item {
-    margin: 0;
-    padding: 0;
+    margin: 0 0 0 20px;
+    padding: 10px 0px;
+    border-bottom: 1px solid #f1f3f4;
   }
 
   &__link {
     padding: 4px 20px;
+    font-size: 16px;
     transition: color .3s;
     text-decoration: none;
-    color: rgba(255,255,255,.8);
+    color: rgb(0,0,0);
+    font-weight: 500;
   }
 
 
@@ -34,17 +41,22 @@ body {
 
 .nav-list {
   list-style: none;   
-
+  margin: 0;
+  margin-top: 10px;
+  border-top: 1px solid #f1f3f4;
   &__item {
     margin: 0;
-    padding: 0;
+    padding: 5px 0;
+
   }
 
   &__link {
     padding: 4px 20px;
+    font-size: 16px;
     transition: color .3s;
     text-decoration: none;
-    color: rgba(255,255,255,.8);
+    color: rgba(0,0,0,.6);
+    font-weight: 400;
   }
 }
 
@@ -52,25 +64,38 @@ body {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
-  width: calc(100% - 170px - 270px);
-  margin: 0 170px 0 270px;
-  border-radius: 10px;
+  width: calc(100% - 300px - 270px);
+  margin: 0 300px 0 270px;
   background: #fff;  
 }
 
 .article-wrap {
   display: block;
   padding: 46px 48px 7px;
-  border-top: 1px solid grey;
+  border-top: 1px solid #f1f3f4;
   &__title {
     font: 300 100% 'OpenSans-SemiBold',Arial,sans-serif;
     position: relative;
     z-index: 1;
     clear: left;
-    font-size: 50px;
-    line-height: 64px;
+    font-size: 40px;
+    line-height: 34px;
     float: left;
     margin: 0 0 34px -2px;
+  }
+
+  &__hint {
+    font: 100 100% 'OpenSans-SemiBold',Arial,sans-serif;
+    position: relative;
+    z-index: 1;
+    clear: left;
+    font-size: 16px;
+    line-height: 34px;
+    float: left;
+    margin: 0 0 34px -2px;
+    background: #f1f3f4;
+    padding: 2px 20px;
+    border-radius: 20px;
   }
 
   &__subtitle {
@@ -79,9 +104,9 @@ body {
     z-index: 1;
     clear: left;
     padding: 0;
-    font-size: 40px;
-    line-height: 48px;
-    margin: 48px 0 16px -1px;
+    font-size: 30px;
+    line-height: 30px;
+    margin: 10px 0 16px -1px;
     float: left;
   }
 

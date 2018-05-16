@@ -14,6 +14,7 @@ const data = [
 ]
 
 const mainTitle = "Martinique"
+const hint = "Whatever it's said. You could press here anyway"
 const fakeContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut ullamcorper leo. Sed id elit a lorem tempor eleifend nec et augue. Donec eget tortor ut ligula ultrices auctor quis ut massa. Pellentesque semper metus lacus, eget sollicitudin urna volutpat nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum vehicula eu augue ac varius. Nunc id lectus nisi. Maecenas vitae orci semper, ornare purus a, mattis enim. Donec facilisis eu mi vel tristique. Aenean lectus enim, mattis non lorem vel, vestibulum dignissim turpis. Aliquam a turpis sodales, mattis dolor non, tristique nibh. In bibendum magna ac orci dapibus commodo."
 
 class WikiPage extends React.Component {
@@ -98,7 +99,10 @@ class WikiPage extends React.Component {
         return (
           <div className="article-wrap">
             <div className="article-wrap__title" id={elem}>
-              {elem}
+              {index === 0 ? mainTitle : elem}
+            </div>
+            <div className="article-wrap__hint" id={elem}>
+              {index === 0 ? hint : null}
             </div>
             <div className="article-wrap__content">
               {fakeContent}
@@ -118,9 +122,6 @@ class WikiPage extends React.Component {
   render() {
     return (
       <div className="page">
-        <div className="header">
-          Полосочка
-        </div>
         {this.renderNav()}
         {this.renderArticle()}
       </div>
