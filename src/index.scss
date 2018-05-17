@@ -2,13 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #4c7196;
 }
 
 .nav {
   position: fixed;
   top: 190px;
-  left: 9px;
+  left: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -36,10 +35,15 @@ body {
       font-size: 12px;
       // background: black;
     }
+
     &_title {
       text-align: center;
       color: rgba(0,0,0,.6)
     }
+
+    // &:hover {
+    //   background: #f1f3f4;
+    // }
   }
 
   &__link {
@@ -74,6 +78,10 @@ body {
       font-size: 12px;
       // background: black;
     }
+
+    // &:hover {
+    //   background: #f1f3f4;
+    // }
   }
 
   &__link {
